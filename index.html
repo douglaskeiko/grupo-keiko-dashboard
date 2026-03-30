@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grupo Keiko — Estrutura Interativa</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="glass">
+  <div class="logo-area">
+    <div class="logo-icon">K</div>
+    <div class="logo-text">
+      <h1 contenteditable="true">Grupo Keiko</h1>
+      <p contenteditable="true">Painel Estratégico & Estrutura</p>
+    </div>
+  </div>
+  <nav>
+    <button class="nav-btn active" data-target="org">Organograma</button>
+    <button class="nav-btn" data-target="attr">Metas & Atribuições</button>
+    <button class="nav-btn" data-target="brands">Divisão Marcas</button>
+  </nav>
+  <div class="actions">
+    <button class="btn-action" onclick="resetData()">↺ Reset</button>
+    <button class="btn-action btn-primary" onclick="window.print()">🖨 Exportar PDF</button>
+  </div>
+</header>
+
+<main id="app-container">
+  <!-- Content will be loaded from localStorage (v4) or default below -->
+  <div id="editable-sandbox">
+    
+    <!-- ==================== TAB 1: ORGANOGRAMA ==================== -->
+    <section id="org" class="tab-content active">
+      <div class="page-header">
+        <h2 contenteditable="true">Organograma Hierárquico</h2>
+        <p contenteditable="true">Arraste os cards livremente. Clique na bolinha ao lado da legenda para trocar de cor ou em [ + ] para nova.</p>
+      </div>
+
+      <div class="org-tree">
+        <!-- DIRETORIA -->
+        <div class="org-level">
+          <div class="org-group dropzone" id="level-dir">
+            <!-- FR -->
+            <div class="org-card glass" draggable="true">
+              <div class="avatar bg-dir" title="Clique para atualizar a foto">FR</div>
+              <div class="name" contenteditable="true">Franciely</div>
+              <div class="role" contenteditable="true">Diretoria Executiva</div>
+              <div class="tags" contenteditable="false">
+                <span class="tag grupo"><span class="tag-color-picker" title="Trocar Cor"></span><span class="tag-text" contenteditable="true">Grupo Keiko</span></span>
+                <div class="add-tag-btn" title="Adicionar Tag">+</div>
+              </div>
+            </div>
+            <!-- LU -->
+            <div class="org-card glass" draggable="true">
+              <div class="avatar bg-dir" title="Clique para atualizar a foto">LU</div>
+              <div class="name" contenteditable="true">Luilso</div>
+              <div class="role" contenteditable="true">Diretoria Executiva</div>
+              <div class="tags" contenteditable="false">
+                <span class="tag grupo"><span class="tag-color-picker" title="Trocar Cor"></span><span class="tag-text" contenteditable="true">Grupo Keiko</span></span>
+                <div class="add-tag-btn" title="Adicionar Tag">+</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GERÊNCIA / GROWTH -->
+        <div class="org-level">
+          <div class="org-group dropzone" id="level-gerencia">
+            <div class="org-level-title" contenteditable="true">Gestão & Growth</div>
+            
+            <div class="org-card glass" draggable="true">
+              <div class="avatar bg-ger">DM</div>
+              <div class="name" contenteditable="true">Douglas</div>
+              <div class="role" contenteditable="true">Growth Marketing</div>
+              <div class="tags" contenteditable="false">
+                <span class="tag colchoes"><span class="tag-color-picker" title="Trocar Cor"></span><span class="tag-text" contenteditable="true">COLCHÕES / SUPORTE KIDS</span></span>
+                <div class="add-tag-btn">+</div>
+              </div>
+            </div>
+            
+            <div class="org-card glass" draggable="true">
+              <div class="avatar bg-ger">KR</div>
+              <div class="name" contenteditable="true">Karen</div>
+              <div class="role" contenteditable="true">Marketing e comunicação</div>
+              <div class="tags" contenteditable="false">
+                <span class="tag kids"><span class="tag-color-picker" title="Trocar Cor"></span><span class="tag-text" contenteditable="true">KIDS / SUPORTE COLCHÕES</span></span>
+                <div class="add-tag-btn">+</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- COORDENAÇÃO -->
+        <div class="org-level">
+          <div class="org-group dropzone" id="level-coord">
+            <div class="org-level-title" contenteditable="true">Coordenação Integrada</div>
+            
+            <div class="org-card glass" draggable="true">
+              <div class="avatar bg-ger" style="background: linear-gradient(135deg, #a855f7, #c084fc);">CL</div>
+              <div class="name" contenteditable="true">Carla</div>
+              <div class="role" contenteditable="true">Gerente de Mídias e Conteúdo</div>
+              <div class="tags" contenteditable="false">
+                <span class="tag kids"><span class="tag-color-picker" title="Trocar Cor"></span><span class="tag-text" contenteditable="true">KIDS / SUPORTE COLCHÕES</span></span>
+                <div class="add-tag-btn">+</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ESPECIALISTAS E AUDIOVISUAL (TESTING 5+) -->
+        <div class="org-level">
+          <div class="org-group dropzone" id="level-esp">
+            <div class="org-level-title" contenteditable="true">Audiovisual, Design & Especialistas</div>
+            
+            <div class="org-card glass" draggable="true">
+              <div class="avatar bg-mix">MT</div>
+              <div class="name" contenteditable="true">Mateus</div>
+              <div class="role" contenteditable="true">Produção Audiovisual</div>
+              <div class="tags" contenteditable="false">
+                <span class="tag colchoes"><span class="tag-color-picker" title="Trocar Cor"></span><span class="tag-text" contenteditable="true">Colchões</span></span>
+                <span class="tag kids"><span class="tag-color-picker" title="Trocar Cor"></span><span class="tag-text" contenteditable="true">Kids</span></span>
+                <div class="add-tag-btn">+</div>
+              </div>
+            </div>
+
+            <div class="org-card glass" draggable="true">
+              <div class="avatar bg-mix">AN</div>
+              <div class="name" contenteditable="true">Ana</div>
+              <div class="role" contenteditable="true">Designer Digital</div>
+              <div class="tags" contenteditable="false">
+                <span class="tag colchoes"><span class="tag-color-picker" title="Trocar Cor"></span><span class="tag-text" contenteditable="true">Colchões</span></span>
+                <span class="tag kids"><span class="tag-color-picker" title="Trocar Cor"></span><span class="tag-text" contenteditable="true">Kids Provisório</span></span>
+                <div class="add-tag-btn">+</div>
+              </div>
+            </div>
+
+            <div class="org-card glass" draggable="true">
+              <div class="avatar bg-col">JL</div>
+              <div class="name" contenteditable="true">Julio</div>
+              <div class="role" contenteditable="true">Designer</div>
+              <div class="tags" contenteditable="false">
+                <span class="tag colchoes"><span class="tag-color-picker" title="Trocar Cor"></span><span class="tag-text" contenteditable="true">ENDOMARKETING</span></span>
+                <div class="add-tag-btn">+</div>
+              </div>
+            </div>
+
+            <div class="org-card glass" draggable="true">
+              <div class="avatar bg-mix">SV</div>
+              <div class="name" contenteditable="true">Silverado</div>
+              <div class="role" contenteditable="true">Relações Públicas</div>
+              <div class="tags" contenteditable="false">
+                <span class="tag colchoes"><span class="tag-color-picker" title="Trocar Cor"></span><span class="tag-text" contenteditable="true">Colchões</span></span>
+                <span class="tag kids"><span class="tag-color-picker" title="Trocar Cor"></span><span class="tag-text" contenteditable="true">Kids</span></span>
+                <div class="add-tag-btn">+</div>
+              </div>
+            </div>
+
+            <div class="org-card glass" draggable="true">
+              <div class="avatar bg-col">AD</div>
+              <div class="name" contenteditable="true">Adriano</div>
+              <div class="role" contenteditable="true">Analista de Marketing</div>
+              <div class="tags" contenteditable="false">
+                <span class="tag colchoes"><span class="tag-color-picker" title="Trocar Cor"></span><span class="tag-text" contenteditable="true">Colchões</span></span>
+                <div class="add-tag-btn">+</div>
+              </div>
+            </div>
+            
+            <div class="org-card glass" draggable="true" style="border: 1px dashed var(--grupo-color);">
+              <div class="avatar bg-partner">ZA</div>
+              <div class="name" contenteditable="true">Alexandre / Igiani</div>
+              <div class="role" contenteditable="true">Zatho Digital</div>
+              <div class="tags" contenteditable="false">
+                <span class="tag verde"><span class="tag-color-picker" title="Trocar Cor"></span><span class="tag-text" contenteditable="true">Parceiros</span></span>
+                <div class="add-tag-btn">+</div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+
+        <!-- TRÁFEGO -->
+        <div class="org-level">
+          <div class="org-group dropzone" id="level-traf">
+            <div class="org-level-title" contenteditable="true">Performance & Tráfego Pago</div>
+            
+            <div class="org-card glass" draggable="true">
+              <div class="avatar bg-col">RF</div>
+              <div class="name" contenteditable="true">Rafael</div>
+              <div class="role" contenteditable="true">Gestor Whatsapp</div>
+              <div class="tags" contenteditable="false">
+                <span class="tag colchoes"><span class="tag-color-picker" title="Trocar Cor"></span><span class="tag-text" contenteditable="true">Colchões</span></span>
+                <div class="add-tag-btn">+</div>
+              </div>
+            </div>
+
+            <div class="org-card glass" draggable="true">
+              <div class="avatar bg-mix">JH</div>
+              <div class="name" contenteditable="true">Jhony</div>
+              <div class="role" contenteditable="true">Analista de Dashboards</div>
+              <div class="tags" contenteditable="false">
+                <span class="tag colchoes"><span class="tag-color-picker" title="Trocar Cor"></span><span class="tag-text" contenteditable="true">Colchões</span></span>
+                <span class="tag kids"><span class="tag-color-picker" title="Trocar Cor"></span><span class="tag-text" contenteditable="true">Kids</span></span>
+                <div class="add-tag-btn">+</div>
+              </div>
+            </div>
+
+            <div class="org-card glass" draggable="true">
+              <div class="avatar bg-mix">LL</div>
+              <div class="name" contenteditable="true">Leonardo & Lucas</div>
+              <div class="role" contenteditable="true">Gestores Google Ads</div>
+              <div class="tags" contenteditable="false">
+                <span class="tag colchoes"><span class="tag-color-picker" title="Trocar Cor"></span><span class="tag-text" contenteditable="true">Colchões</span></span>
+                <span class="tag kids"><span class="tag-color-picker" title="Trocar Cor"></span><span class="tag-text" contenteditable="true">Kids</span></span>
+                <div class="add-tag-btn">+</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 2: ATRIBUIÇÕES ==================== -->
+    <section id="attr" class="tab-content">
+      <div class="page-header">
+        <h2 contenteditable="true">Matriz de Atribuições</h2>
+        <p contenteditable="true">Aperte Enter ao final de uma linha para criar rapidamente novos tópicos de tarefa.</p>
+      </div>
+
+      <div class="attr-grid">
+        <!-- Reusing same content as V3 but omitted for brevity if identical? 
+             Wait, I must output the ALL content precisely otherwise it gets lost. -->
+             
+        <!-- CARD Douglas -->
+        <div class="attr-card glass">
+          <div class="attr-header">
+            <div class="avatar bg-ger">DM</div>
+            <div class="attr-info">
+              <div class="name" contenteditable="true">Douglas</div>
+              <div class="role" contenteditable="true">Growth Marketing</div>
+            </div>
+          </div>
+          <ul class="attr-list" contenteditable="true">
+            <li>Liderança na visão global de Growth da empresa</li>
+            <li>Aprovação técnica e estratégica do site e usabilidade (UX)</li>
+            <li>Gerenciamento técnico site Kids e Colchões</li>
+            <li>Criação e Manutenção site Keiko Kids</li>
+            <li>Monitoramento da saúde financeira de mídia paga (CAC e ROI)</li>
+            <li>Análise do Clarity e e-commerce avançado</li>
+            <li>Definição orçamental (Budget macro)</li>
+            <li>Acompanhamento e gestão de todo time</li>
+            <li>Apresentação de relatórios semanais para a diretoria</li>
+            <li>Reunião semanal com a diretoria (Luilso, Fran, Karen)</li>
+            <li>Acompanhamento gravações e fotos</li>
+          </ul>
+        </div>
+        <!-- CARD Karen -->
+        <div class="attr-card glass">
+          <div class="attr-header">
+            <div class="avatar bg-ger">KR</div>
+            <div class="attr-info">
+              <div class="name" contenteditable="true">Karen</div>
+              <div class="role" contenteditable="true">Marketing e comunicação</div>
+            </div>
+          </div>
+          <ul class="attr-list" contenteditable="true">
+            <li>Mentoria estratégica na frente Grupo e planejamento macro</li>
+            <li data-brand="kids">Foco intensivo na estratégia de lançamento da linha Keiko Kids (DEFENSORA DA MARCA)</li>
+            <li>Aprovação de conceitos e campanhas de marca (Branding)</li>
+            <li>Integração das metas das equipes para as duas frentes</li>
+            <li>Mix de produtos</li>
+            <li>Gerenciamento das campanhas</li>
+            <li>Acompanhamento e gestão de todo time</li>
+            <li>Apresentação de relatórios semanais para a diretoria</li>
+            <li>Reunião semana com a diretoria (Luilso, Fran, Douglas)</li>
+            <li data-brand="kids">Gerenciamento time comercial Keiko Kids</li>
+            <li>CRM</li>
+            <li data-brand="colchoes">Apoio ao time comercial Keiko Colchões</li>
+          </ul>
+        </div>
+        <!-- CARD Carla -->
+        <div class="attr-card glass">
+          <div class="attr-header">
+            <div class="avatar bg-ger" style="background:#a855f7">CL</div>
+            <div class="attr-info">
+              <div class="name" contenteditable="true">Carla</div>
+              <div class="role" contenteditable="true">Gerente de Mídias e Conteúdo / Mkt 360</div>
+            </div>
+          </div>
+          <ul class="attr-list" contenteditable="true">
+            <li>Orquestração e aprovação do cronograma editorial mensal</li>
+            <li>Revisão final de legendas e textos roteirizados</li>
+            <li>Visão 360 dos touchpoints da marca nas redes sociais</li>
+            <li>Ponte de demanda criativa entre influenciadores, design e vídeo</li>
+            <li>Responsável pelas redes sociais das duas marcas (Colchões e Kids)</li>
+            <li>Auditoria e Conferência das imagens do site</li>
+          </ul>
+        </div>
+        <!-- CARD Mateus -->
+        <div class="attr-card glass">
+          <div class="attr-header">
+            <div class="avatar bg-mix">MT</div>
+            <div class="attr-info">
+              <div class="name" contenteditable="true">Mateus</div>
+              <div class="role" contenteditable="true">Produção Audiovisual</div>
+            </div>
+          </div>
+          <ul class="attr-list" contenteditable="true">
+            <li>Edição e Filmagem: Foco em depoimentos e institucionais p/ Colchões e Kids</li>
+            <li>Gerenciamento de banco de assets de áudio e vídeo (Drive/Arquivos)</li>
+            <li>Fechamento de entregas audiovisuais de alta qualidade p/ mês</li>
+            <li>Roteirização institucional</li>
+            <li>Edição das fotos (já mandar no formato 1000x1000px)</li>
+            <li>Criação de vídeo com IA.</li>
+            <li data-brand="colchoes">Eventos colchões</li>
+          </ul>
+        </div>
+        <!-- CARD Ana -->
+        <div class="attr-card glass">
+          <div class="attr-header">
+            <div class="avatar bg-mix">AN</div>
+            <div class="attr-info">
+              <div class="name" contenteditable="true">Ana</div>
+              <div class="role" contenteditable="true">Designer Digital</div>
+            </div>
+          </div>
+          <ul class="attr-list" contenteditable="true">
+            <li data-brand="colchoes">Adaptação de peças de performance para Colchões.</li>
+            <li>Responsável pela criação das peças de comunicação: site e e-mail marketing.</li>
+            <li>Peças para Google e Meta Ads</li>
+            <li data-brand="colchoes">Criação para redes sociais Keiko Colchões.</li>
+            <li>Ambientação com IA.</li>
+          </ul>
+        </div>
+        <!-- CARD Julio -->
+        <div class="attr-card glass">
+          <div class="attr-header">
+            <div class="avatar bg-col">JL</div>
+            <div class="attr-info">
+              <div class="name" contenteditable="true">Julio</div>
+              <div class="role" contenteditable="true">Designer</div>
+            </div>
+          </div>
+          <ul class="attr-list" contenteditable="true">
+            <li>Apoio visual em rotinas de comunicação endomarketing</li>
+            <li>Responsável pela criação de catálogos online e físico.</li>
+            <li>Folders, Flyers, adesivos.</li>
+            <li>Criar projeto de produtos.</li>
+            <li>Apoio a diretoria.</li>
+          </ul>
+        </div>
+        <!-- CARD Silverado -->
+        <div class="attr-card glass">
+          <div class="attr-header">
+            <div class="avatar bg-mix">SV</div>
+            <div class="attr-info">
+              <div class="name" contenteditable="true">Silverado</div>
+              <div class="role" contenteditable="true">Relações Públicas / Influencers</div>
+            </div>
+          </div>
+          <ul class="attr-list" contenteditable="true">
+            <li>Negociação de trocas e mapeamento de macro influencers para Colchões e Kids.</li>
+            <li data-brand="kids">Prospecção de influenciadoras "mães" para publis do Keiko Kids</li>
+            <li>Acompanhamento da régua de permuta, devolução e envio de brindes</li>
+            <li data-brand="colchoes">Eventos colchões</li>
+          </ul>
+        </div>
+        <!-- CARD Adriano -->
+        <div class="attr-card glass">
+          <div class="attr-header">
+            <div class="avatar bg-col">AD</div>
+            <div class="attr-info">
+              <div class="name" contenteditable="true">Adriano</div>
+              <div class="role" contenteditable="true">Analista de Marketing</div>
+            </div>
+          </div>
+          <ul class="attr-list" contenteditable="true">
+            <li>Geração de relatórios cruzados (Meta x Google x Vendas)</li>
+            <li data-brand="colchoes">Apoio estrutural na montagem de campanhas mensais e sazonais colchões</li>
+            <li data-brand="colchoes">Roteirização de campanhas Keiko Colchões</li>
+            <li data-brand="colchoes">Avaliação e otimização de copies e gatilhos mentais das peças colchões</li>
+            <li>Responsável pelo Google meu negócio</li>
+            <li>Captação de depoimentos</li>
+            <li>Suporte nas produções audiovisual</li>
+            <li>benchmarking 2x na semana</li>
+          </ul>
+        </div>
+        <!-- CARD Rafael -->
+        <div class="attr-card glass">
+          <div class="attr-header">
+            <div class="avatar bg-col">RF</div>
+            <div class="attr-info">
+              <div class="name" contenteditable="true">Rafael</div>
+              <div class="role" contenteditable="true">Gestor de Tráfego</div>
+            </div>
+          </div>
+          <ul class="attr-list" contenteditable="true">
+            <li data-brand="colchoes">Gestão exclusiva de campanhas de captação de leads para WhatsApp (1x1)</li>
+            <li data-brand="colchoes">Distribuição igualitária de leads entre os vendedores</li>
+            <li data-brand="colchoes">Testes de novos criativos e otimização por CAC de venda (Colchões)</li>
+            <li>Gerar relatório e apresentar</li>
+            <li>Subir campanha em 24hrs úteis após envio dos criativos</li>
+          </ul>
+        </div>
+        <!-- CARD Jhony -->
+        <div class="attr-card glass">
+          <div class="attr-header">
+            <div class="avatar bg-mix">JH</div>
+            <div class="attr-info">
+              <div class="name" contenteditable="true">Jhony</div>
+              <div class="role" contenteditable="true">Tráfego & Analista</div>
+            </div>
+          </div>
+          <ul class="attr-list" contenteditable="true">
+            <li data-brand="kids">Planejamento e setup inicial das primeiras campanhas Kids</li>
+            <li>Estruturação e acompanhamento das réguas do canal Tintim / Kommo</li>
+            <li>Suporte e alinhamento ao time comercial</li>
+            <li data-brand="colchoes">Manutenção e criação das campanhas Keiko Colchões</li>
+            <li>Tagueamento e Subir campanha em 24hrs úteis após envio dos criativos</li>
+          </ul>
+        </div>
+        <!-- CARD LL -->
+        <div class="attr-card glass">
+          <div class="attr-header">
+            <div class="avatar bg-mix">LL</div>
+            <div class="attr-info">
+              <div class="name" contenteditable="true">Leo / Lucas</div>
+              <div class="role" contenteditable="true">Tráfego Google Ads</div>
+            </div>
+          </div>
+          <ul class="attr-list" contenteditable="true">
+            <li data-brand="colchoes">Gestão completa de Shopping e Search Fundo de Funil para o Site</li>
+            <li>Gestão completa de Google e todas as etapas do funil</li>
+            <li data-brand="colchoes">Otimização diária de ROAS no e-commerce de Colchões</li>
+            <li>Integração Analytics 4 e tag de conversão avançada</li>
+            <li data-brand="kids">Criação das primeiras campanhas Keiko Kids Meta ADS</li>
+          </ul>
+        </div>
+        <!-- CARD Zatho (NOVO) -->
+        <div class="attr-card glass" style="border: 1px dashed var(--colchoes-color)">
+          <div class="attr-header">
+            <div class="avatar bg-partner">ZA</div>
+            <div class="attr-info">
+              <div class="name" contenteditable="true">Zatho Digital (Alexandre/Igiani)</div>
+              <div class="role" contenteditable="true">Produção de Conteúdo Audiovisual</div>
+            </div>
+          </div>
+          <ul class="attr-list" contenteditable="true">
+            <li><b>Roteirização e Casting:</b> Participação colaborativa na criação e desenvolvimento de participantes, locação, etc.</li>
+            <li><b>Produção e Captação:</b> Gravações respeitando cronograma de qualidade em estúdio/local acordado.</li>
+            <li><b>Edição Completa:</b> Inserção de cortes, elementos, finalização.</li>
+            <li data-brand="colchoes"><b>Volume:</b> Até 16 vídeos/mês (Média de 4 por semana).</li>
+            <li><b>SLA:</b> Até 2 vídeos prioritários em 1 dia. O restante em 2 dias úteis. Entregas no GDrive.</li>
+            <li><b>Revisões:</b> Solicitadas em bloco único por vídeo, apenas no mês vigente da entrega.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== TAB 3: DIVISÃO MARCAS ==================== -->
+    <section id="brands" class="tab-content">
+      <div class="page-header">
+        <h2 contenteditable="true">Distribuição de Operação</h2>
+        <p contenteditable="true">Arraste os cards entre as colunas Kids e Colchões para reatribuir frentes de trabalho.</p>
+      </div>
+
+      <div class="brands-container">
+        <!-- BASE COMPARTILHADA (GRUPO) -->
+        <div class="brand-top glass">
+          <h3 class="brand-section-title" contenteditable="true">Grupo Keiko (Gestão Integrada)</h3>
+          <p class="brand-section-desc" contenteditable="true">Diretoria e lideranças táticas que desenham as regras e supervisionam os resultados.</p>
+          
+          <div class="brand-members dropzone" style="justify-content: center;">
+            <div class="b-member" draggable="true"><div class="av bg-dir">FR</div><div class="info"><div class="n" contenteditable="true">Franciely</div><div class="r" contenteditable="true">Diretoria</div></div></div>
+            <div class="b-member" draggable="true"><div class="av bg-dir">LU</div><div class="info"><div class="n" contenteditable="true">Luilso</div><div class="r" contenteditable="true">Diretoria</div></div></div>
+            <div class="b-member" draggable="true"><div class="av bg-ger">DM</div><div class="info"><div class="n" contenteditable="true">Douglas</div><div class="r" contenteditable="true">Growth/Projetos</div></div></div>
+            <div class="b-member" draggable="true"><div class="av bg-ger">KR</div><div class="info"><div class="n" contenteditable="true">Karen</div><div class="r" contenteditable="true">Growth/Projetos</div></div></div>
+            <div class="b-member" draggable="true"><div class="av" style="background:#a855f7">CL</div><div class="info"><div class="n" contenteditable="true">Carla</div><div class="r" contenteditable="true">Mídias / Mkt 360</div></div></div>
+          </div>
+        </div>
+
+        <!-- DIVISÃO -> Kids vs Colchoes -->
+        <div class="brand-split">
+          
+          <!-- COLUNINHA COLCHOES -->
+          <div class="brand-col colchoes">
+            <h3 class="brand-section-title" contenteditable="true">Keiko Colchões</h3>
+            <p class="brand-section-desc" contenteditable="true">Operação Core: Total foco em venda e amplificação agressiva de mercado.</p>
+            
+            <div class="brand-members dropzone">
+              <div class="b-member" draggable="true"><div class="av bg-col">RF</div><div class="info"><div class="n" contenteditable="true">Rafael</div><div class="r" contenteditable="true">Tráfego Meta WP</div></div></div>
+              <div class="b-member" draggable="true"><div class="av bg-col">LL</div><div class="info"><div class="n" contenteditable="true">Leo & Lucas</div><div class="r" contenteditable="true">Google Site</div></div></div>
+              <div class="b-member" draggable="true"><div class="av bg-col">JL</div><div class="info"><div class="n" contenteditable="true">Julio</div><div class="r" contenteditable="true">Designer</div></div></div>
+              <div class="b-member" draggable="true"><div class="av bg-mix">AN</div><div class="info"><div class="n" contenteditable="true">Ana</div><div class="r" contenteditable="true">Designer</div></div></div>
+              <div class="b-member" draggable="true"><div class="av bg-mix">MT</div><div class="info"><div class="n" contenteditable="true">Mateus</div><div class="r" contenteditable="true">A. Visual Compartilh.</div></div></div>
+              <div class="b-member" draggable="true"><div class="av bg-mix">SV</div><div class="info"><div class="n" contenteditable="true">Silverado</div><div class="r" contenteditable="true">Influenciadores</div></div></div>
+              <div class="b-member" draggable="true"><div class="av bg-mix">JH</div><div class="info"><div class="n" contenteditable="true">Jhony</div><div class="r" contenteditable="true">Tráfego e Dados</div></div></div>
+              <div class="b-member" draggable="true"><div class="av bg-mix">AD</div><div class="info"><div class="n" contenteditable="true">Adriano</div><div class="r" contenteditable="true">Analista</div></div></div>
+              <div class="b-member" draggable="true"><div class="av bg-partner">ZA</div><div class="info"><div class="n" contenteditable="true">Zatho</div><div class="r" contenteditable="true">Audiovisual</div></div></div>
+            </div>
+          </div>
+
+          <!-- COLUNINHA KIDS -->
+          <div class="brand-col kids">
+            <h3 class="brand-section-title" contenteditable="true">Keiko Kids</h3>
+            <p class="brand-section-desc" contenteditable="true">Start-up Interna: Foco em lançamento, branding e novo público-alvo materno.</p>
+            
+            <div class="brand-members dropzone">
+              <div class="b-member" draggable="true" style="border: 1px solid var(--kids-color); background: var(--kids-light)"><div class="av bg-ger">KR</div><div class="info"><div class="n" contenteditable="true">Karen</div><div class="r" contenteditable="true">Liderança Front Kids</div></div></div>
+              <div class="b-member" draggable="true"><div class="av bg-mix">AN</div><div class="info"><div class="n" contenteditable="true">Ana</div><div class="r" contenteditable="true">Designer Foco Kids</div></div></div>
+              <div class="b-member" draggable="true"><div class="av bg-mix">MT</div><div class="info"><div class="n" contenteditable="true">Mateus</div><div class="r" contenteditable="true">A. Visual Compartilh.</div></div></div>
+              <div class="b-member" draggable="true"><div class="av bg-mix">SV</div><div class="info"><div class="n" contenteditable="true">Silverado</div><div class="r" contenteditable="true">Influencers Mães</div></div></div>
+              <div class="b-member" draggable="true"><div class="av bg-mix">JH</div><div class="info"><div class="n" contenteditable="true">Jhony</div><div class="r" contenteditable="true">Tráfego Auxiliar</div></div></div>
+              <div class="b-member" draggable="true"><div class="av bg-mix">AD</div><div class="info"><div class="n" contenteditable="true">Adriano</div><div class="r" contenteditable="true">Analista</div></div></div>
+              <div class="b-member" draggable="true"><div class="av bg-partner">ZA</div><div class="info"><div class="n" contenteditable="true">Zatho</div><div class="r" contenteditable="true">Audiovisual</div></div></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </div> <!-- /editable-sandbox -->
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
