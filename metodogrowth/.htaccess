@@ -1,0 +1,6 @@
+RewriteEngine On
+# Evita que o roteamento da aplicação raiz (SPA) interfira nesta pasta
+RewriteRule ^index\.html$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.html [L]
